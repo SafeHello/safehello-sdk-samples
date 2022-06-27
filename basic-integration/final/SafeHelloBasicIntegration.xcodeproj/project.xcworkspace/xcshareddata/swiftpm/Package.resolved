@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "safehello-ios-binary-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/HopCommunity/safehello-ios-binary-sdk.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c7bef1c810d097998cd6c43427f1db02d4981d3e"
+      }
+    }
+  ],
+  "version" : 2
+}
