@@ -1,24 +1,241 @@
-This is free and unencumbered software released into the public domain.
+                        Software Development Kit Agreement
+                                   January 2022
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+This is the SafeHello* Software Development Kit Agreement. The SafeHello
+software development kit (the "SDK") includes the SafeHello system files,
+documentation, software code, and other materials made available to you.
+The SDK is licensed to you subject to the terms of this Agreement. This
+Agreement forms a legally binding contract between you and SafeHello in
+relation to your use of the SDK.
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+1. Accepting this Agreement
+   a. By using the SDK (or any portion), you hereby agree to the terms
+      and conditions of this Agreement.
+   b. You may not use the SDK if you do not accept this Agreement.
+   c. You may not use the SDK and may not accept the Agreement if you are
+      a person barred from receiving the SDK under the laws of the United
+      States or other countries including the country in which you are
+      resident or from which you use the SDK.
+   d. If you are agreeing to be bound by this Agreement on behalf of your
+      employer or other entity, you represent and warrant that you have
+      full legal authority to bind your employer or such entity to this
+      Agreement. If you do not have the requisite authority, you may not
+      accept the Agreement or use the SDK on behalf of your employer or
+      other entity.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+2. SDK License from SafeHello
+   a. Subject to the terms of this Agreement, SafeHello grants you a limited,
+      personal, worldwide, royalty-free, non-assignable, non-exclusive,
+      nontransferable and non-sublicensable license to use the SDK solely to
+      develop transactions for the SafeHello platform.
+   b. You may not use this SDK to develop another SDK.
+   c. You agree that SafeHello or third parties own all legal right, title
+      and interest in and to the SDK, including any Intellectual Property
+      Rights that subsist in the SDK. "Intellectual Property Rights" means any
+      and all rights under patent law, copyright law, trade secret law,
+      trademark law, and any and all other proprietary rights now existing or
+      which may come into existence in the future on a worldwide basis.
+      SafeHello reserves all rights not expressly granted to you.
+   d. You may not use the SDK for any purpose not expressly permitted by this
+      Agreement. Except to the extent required by applicable third party
+      licenses, you may notcopy (except for backup purposes), modify, adapt,
+      redistribute, decompile, reverse engineer, disassemble, or create
+      derivative works of the SDK or any part of the SDK.
+   e. Use, reproduction and distribution of components of the SDK licensed
+      under an open source software license are governed solely by the terms
+      of that open source software license and not this Agreement.
+   f. You agree that the form and nature of the SDK that SafeHello provides
+      may change with 30 days prior notice to you and that future versions
+      of the SDK may be incompatible with applications developed on previous
+      versions of the SDK. You agree that SafeHello may stop (permanently or
+      temporarily) providing the SDK (or any features within the SDK) to you
+      or to users generally at SafeHello's sole discretion, without prior
+      notice to you.
+   g. Nothing in this Agreement grants you a right to use any of SafeHello's
+      trade names, trademarks, service marks, logos, domain names, or other
+      distinctive brand features.
+   h. You agree that you will not remove, obscure, or alter any proprietary
+      rights notices (including copyright and trademark notices) that may be
+      affixed to or contained within the SDK.
 
-For more information, please refer to <https://unlicense.org>
+3. Use of the SDK by You
+   a. SafeHello agrees that it obtains no right, title or interest from you
+      (or your licensors) under this Agreement in or to any software
+      applications that you develop using the SDK, including any intellectual
+      property rights that subsist in those applications.
+   b. You agree to use the SDK and write applications only for purposes that
+      are permitted by (a) this Agreement and (b) any applicable law,
+      regulation or generally accepted practices or guidelines in the relevant
+      jurisdictions (including any laws regarding the export of data or
+      software to and from the United States or other relevant countries).
+   c. You agree that if you use the SDK to develop applications for general
+      public users, you will protect the privacy and legal rights of those
+      users. If your application stores personal or sensitive information
+      provided by users, it must do so securely.
+   d. You agree that you will not engage in any activity with the SDK,
+      including the development or distribution of an application, that
+      interferes with, disrupts, damages, or accesses in an unauthorized
+      manner the servers, networks, or other properties or services of any
+      third party including, but not limited to, SafeHello or any mobile
+      communications carrier.
+   e. You agree that you are solely responsible for (and that SafeHello has no
+      responsibility to you or to any third party for) any data, content, or
+      resources that you create, transmit or display through any applications
+      created using the SDK, and for the consequences of your actions
+      (including any loss or damage which SafeHello may suffer) by doing so.
+   f. You agree that you are solely responsible for (and that SafeHello has no
+      responsibility to you or to any third party for) any breach of your
+      obligations under this Agreement, any applicable third-party contract or
+      Terms of Service, or any applicable law or regulation, and for the
+      consequences (including any loss or damage which SafeHello or any third
+      party may suffer) of any such breach.
+
+4. Your Developer Credentials
+   a. You agree that you are responsible for maintaining the confidentiality of
+      any developer credentials that may be issued to you by SafeHello or which
+      you may choose yourself and that you will be solely responsible for all
+      applications that are developed under your developer credentials.
+
+5. Information Use
+   a. In order to continually innovate and improve the SDK, SafeHello may collect
+      certain usage statistics from the software including but not limited to a
+      unique identifier, associated IP address, version number of the software,
+      and information on which tools and/or services in the SDK are being used
+      and how they are being used.
+   b. Any personal information that might be collected is examined in the aggregate to
+      improve the SDK and is maintained in accordance with SafeHello's Privacy Policy.
+
+6. Third Party Applications
+   a. If you use the SDK to run applications developed by a third party or that
+      access data, content or resources provided by a third party, you agree that
+      SafeHello is not responsible for those applications, data, content, or
+      resources. You understand that all data, content or resources which you may
+      access through such third party applications are the sole responsibility of
+      the person from which they originated and that SafeHello is not liable for 
+      any loss or damage that you may experience as a result of the use or access
+      of any of those third party applications, data, content, or resources.
+   b. You should be aware the data, content, and resources presented to you through
+      such a third party application may be protected by intellectual property
+      rights which are owned by the providers (or by other persons or companies on
+      their behalf). You may not modify, rent, lease, loan, sell, distribute or
+      create derivative works based on these data, content, or resources (either
+      in whole or in part) unless you have been specifically given permission to
+      do so by the relevant owners.
+   c. You acknowledge that your use of such third party applications, data, content,
+      or resources may be subject to separate terms between you and the relevant
+      third party. In that case, this Agreement does not affect your legal
+      relationship with these third parties.
+
+7. Using SafeHello APIs
+   a. If you use any API to retrieve data from SafeHello, you acknowledge that the
+      data may be protected by intellectual property rights which are owned by
+      SafeHello or those parties that provide the data (or by other persons or
+      companies on their behalf). Your use of any such API may be subject to
+      additional terms of service or terms of use. You may not modify, rent, lease,
+      loan, sell, distribute or create derivative works based on this data (either
+      in whole or in part) unless allowed by the relevant terms of service or
+      terms of use.
+   b. If you use any API to retrieve a user's data from SafeHello, you acknowledge
+      and agree that you shall retrieve data only with the user's explicit consent
+      and only when, and for the limited purposes for which, the user has given
+      you permission to do so.
+
+8. Term and Terminating this Agreement
+   a. This Agreement will be in force and effect from the date of commencement of
+      this Agreement (being the earlier of the date of your acceptance of this
+      Agreement or first use of any portion of the SDK) until terminated by either
+      party at any time. Upon termination of this Agreement for any reason, all of
+      your rights to use the SDK expire automatically, provided that any obligations
+      and liabilities that explicitly or necessarily must survive such termination
+      shall continue to apply.
+
+9. DISCLAIMER OF WARRANTIES
+   a. YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SDK AND ANY MATERIAL
+      DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SDK IS AT YOUR SOLE
+      RISK AND THAT THE SDK IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY
+      OF ANY KIND FROM SAFEHELLO AND YOU ARE SOLELY RESPONSIBLE FOR ANY DAMAGE TO
+      YOUR COMPUTER SYSTEM OR OTHER DEVICE OR LOSS OF DATA THAT RESULTS FROM SUCH USE.
+   b. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SAFEHELLO DOES NOT REPRESENT
+      OR WARRANT THAT THE SDK: (A) IS ACCURATE, RELIABLE, OR CORRECT; (B) WILL MEET
+      ANY LICENSEE REQUIREMENTS; (C) WILL BE AVAILABLE AT ANY PARTICULAR TIME OR
+      LOCATION, UNINTERRUPTED, OR SECURE; (D) IS FREE OF DEFECTS OR ERRORS AND THAT
+      ANY, IF FOUND, WILL BE CORRECTED; AND/OR (E) IS FREE OF VIRUSES OR OTHER
+      HARMFUL COMPONENTS.
+   c. SAFEHELLO FURTHER EXPRESSLY DISCLAIMS ALL WARRANTIES AND CONDITIONS OF ANY KIND,
+      WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES
+      AND CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+      NON-INFRINGEMENT.
+   d. LICENSEE MAY HAVE OTHER RIGHTS WHICH MAY NOT BE LIMITED OR EXCLUDED AND WHICH
+      MAY VARY FROM STATE/JURISDICTION TO STATE/JURISDICTION. THIS DOCUMENT IS NOT
+      INTENDED TO NEGATIVELY AFFECT SUCH RIGHTS.
+
+10. LIMITATION OF LIABILITY 
+   a. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL SAFEHELLO BE
+      LIABLE TO LICENSEE, LICENSEE’S AFFILIATES, USERS, OR ANYONE ELSE FOR: (A) ANY
+      LOSS OF USE, DATA, GOODWILL, OR PROFITS, WHETHER OR NOT FORESEEABLE; (B) ANY
+      LOSS OR DAMAGES IN CONNECTION WITH TERMINATION OR SUSPENSION OF YOUR ACCESS TO
+      SAFEHELLO’S PRODUCTS IN ACCORDANCE WITH THIS AGREEMENT, OR (C) ANY SPECIAL,
+      INCIDENTAL, INDIRECT, CONSEQUENTIAL, EXEMPLARY OR PUNITIVE DAMAGES WHATSOEVER
+      (EVEN IF THE SAFEHELLO HAS BEEN ADVISED OF THE POSSIBILITY OF THESE DAMAGES),
+      INCLUDING THOSE (X) RESULTING FROM LOSS OF USE, DATA, OR PROFITS, WHETHER OR NOT
+      THEY ARE FORESEEABLE, (Y) BASED ON ANY THEORY OF LIABILITY, INCLUDING BREACH OF
+      CONTRACT OR WARRANTY, STRICT LIABILITY, NEGLIGENCE OR OTHER TORTIOUS ACTION, OR
+      (Z) ARISING FROM ANY OTHER CLAIM ARISING OUT OF OR IN CONNECTION WITH LICENSEE’S
+      USE OF OR ACCESS TO THE SDK. THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY
+      TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE JURISDICTION.
+   b. THE TOTAL LIABILITY OF SAFEHELLO IN ANY MATTER ARISING OUT OF OR RELATED TO THIS
+      AGREEMENT IS LIMITED TO TEN (10) US DOLLARS. THIS LIMITATION WILL APPLY EVEN IF
+      SAFEHELLO HAS BEEN ADVISED OF THE POSSIBILITY OF LIABILITY EXCEEDING SUCH AMOUNT
+      AND NOTWITHSTANDING ANY FAILURE OF THE ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+
+11. Indemnification
+   a. To the maximum extent permitted by law, you agree to defend, indemnify and hold
+      harmless SafeHello, its affiliates and their respective directors, officers,
+      employees and agents from and against any and all claims, actions, suits or
+      proceedings, as well as any and all losses, liabilities, damages, costs and
+      expenses (including reasonable attorneys fees) arising out of or accruing from
+      (a) your use of the SDK, (b) any application you develop on the SDK that
+      infringes any copyright, trademark, trade secret, trade dress, patent or other
+      intellectual property right of any person or defames any person or violates their
+      rights of publicity or privacy, and (c) any non-compliance by you with this Agreement.
+
+12. Changes to the Agreement
+   a. SafeHello may make changes to the Agreement as it distributes new versions of
+      the SDK. When these changes are made, SafeHello will make a new version of
+      the Agreement available on the website where the SDK is made available.
+
+13. General Terms
+   a. This Agreement constitutes the whole legal agreement between you and SafeHello and
+      governs your use of the SDK (excluding any services which SafeHello may provide to
+      you under a separate written agreement), and completely replaces any prior
+      agreements between you and SafeHello in relation to the SDK.
+   b. You agree that if SafeHello does not exercise or enforce any legal right or remedy
+      which is contained in this Agreement (or which SafeHello has the benefit of under
+      any applicable law), this will not be taken to be a formal waiver of SafeHello's
+      rights and that those rights or remedies will still be available to SafeHello.
+   c. If any court of law, having the jurisdiction to decide on this matter, rules that
+      any provision of this Agreement is invalid, then that provision will be removed
+      from this Agreement without affecting the rest of this Agreement. The remaining
+      provisions of this Agreement will continue to be valid and enforceable.
+   d. You acknowledge and agree that each member of the group of companies of which
+      SafeHello is the parent shall be third party beneficiaries to this Agreement and
+      that such other companies shall be entitled to directly enforce, and rely upon,
+      any provision of this Agreement that confers a benefit on (or rights in favor of)
+      them. Other than this, no other person or company shall be third party
+      beneficiaries to this Agreement.
+   e. EXPORT RESTRICTIONS. THE SDK IS SUBJECT TO UNITED STATES EXPORT LAWS AND REGULATIONS.
+      YOU MUST COMPLY WITH ALL DOMESTIC AND INTERNATIONAL EXPORT LAWS AND REGULATIONS THAT
+      APPLY TO THE SDK. THESE LAWS INCLUDE RESTRICTIONS ON DESTINATIONS, END USERS AND END USE.
+   f. The rights and obligations under this Agreement may not be assigned, sublicensed or
+      transferred by you without the prior written approval of SafeHello, which may be
+      withheld for any reason.
+   g. This Agreement, and your relationship with SafeHello under this Agreement, shall be
+      governed by the laws of the state of Texas without regard to its conflict of laws
+      provisions, and the applicable federal laws therein. You and SafeHello agree to
+      submit to the exclusive jurisdiction of the courts located in Travis County, Texas
+      to resolve any legal matter arising from this Agreement. Notwithstanding this, you
+      agree that SafeHello shall still be allowed to apply for injunctive remedies (or an
+      equivalent type of urgent legal relief) in any jurisdiction.
+
+
+*SafeHello is a tradename of HopGrade, Inc.
