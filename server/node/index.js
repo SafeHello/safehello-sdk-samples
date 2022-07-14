@@ -2,16 +2,17 @@ const { SafeHello } = require('@safehello/sdk-typescript')
 const express = require('express')
 const app = express()
 const port = 3000
-const apiToken = '<<API_TOKEN>>'
+const apiToken = process.env.API_TOKEN
 
 /**
  * With the apiToken, you can call all the methods of the SDK.
  */
 const apiClient = new SafeHello(apiToken)
-const senderId = 'test-safehello-user'
 
-app.get('/', async (req, res) => {
-  const userToken = await apiClient.getAuthToken(senderId)
+app.get('/tokens/:userId', async (req, res) => {
+  // ie: http://localhost:3000/tokens/sample-user-id
+  const { userId } = req.params
+  const userToken = await apiClient.getAuthToken(userId)
   /*
   With the userToken, you can call the createEvent and getEvent methods of the SDK.
   */
@@ -19,19 +20,18 @@ app.get('/', async (req, res) => {
   res.send({ token: userToken })
 })
 
-app.get('/create', async (req, res) => {
-  const event = await apiClient.createEvent({ senderId })
+app.get('/create/:userId', async (req, res) => {
+  // ie: http://localhost:3000/create/sample-user-id
+  const { userId } = req.params
+  const event = await apiClient.createEvent({ senderId: userId })
   res.send(event)
 })
 
-app.get('/get', async (req, res) => {
-  // ie: http://localhost:3000/get?eventId=01G7YRQQ45B8GS5JDTPZ1RK401
-  const eventId = req.query.eventId
-  if (eventId) {
-    const event = await apiClient.getEvent(eventId)
-    res.send(event)
-  }
-  res.error('No event created')
+app.get('/get/:eventId', async (req, res) => {
+  // ie: http://localhost:3000/get/01G7YRQQ45B8GS5JDTPZ1RK401
+  const { eventId } = req.params.eventId
+  const event = await apiClient.getEvent(eventId)
+  res.send(event)
 })
 
 app.listen(port, () => {
