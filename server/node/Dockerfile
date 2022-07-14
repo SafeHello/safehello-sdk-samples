@@ -1,5 +1,5 @@
 FROM node:14-alpine
-ENV API_TOKEN=<<API_TOKEN>>
+ENV TOKEN=<<API_TOKEN>>
 RUN apk add --no-cache tini
 WORKDIR /app
 
@@ -12,5 +12,5 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 3000
+EXPOSE 8080
 ENTRYPOINT [ "/sbin/tini", "--", "node", "index.js" ]
