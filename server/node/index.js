@@ -3,11 +3,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 const apiToken = process.env.API_TOKEN
-
+const safehelloEnv = process.env.SAFEHELLO_ENV || 'prod'
 /**
  * With the apiToken, you can call all the methods of the SDK.
  */
-const apiClient = new SafeHello(apiToken)
+const apiClient = new SafeHello(apiToken, safehelloEnv)
 
 app.get('/tokens/:userId', async (req, res) => {
   // ie: http://localhost:3000/tokens/sample-user-id
@@ -29,7 +29,7 @@ app.get('/create/:userId', async (req, res) => {
 
 app.get('/get/:eventId', async (req, res) => {
   // ie: http://localhost:3000/get/01G7YRQQ45B8GS5JDTPZ1RK401
-  const { eventId } = req.params.eventId
+  const { eventId } = req.params
   const event = await apiClient.getEvent(eventId)
   res.send(event)
 })
