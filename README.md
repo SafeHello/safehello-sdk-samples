@@ -1,9 +1,1 @@
-# SafeHello Samples
-
-```mermaid
-  graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
-```
+[Go to the Wiki for documentation](https://github.com/SafeHello/safehello-sdk-samples/wiki)
