@@ -3,7 +3,7 @@ import SafeHelloSDK
 
 struct ContentView: View {
     @State private var eventId: String = ""
-    @State private var config: Config?
+    @State private var config: Configuration?
     private let hostUserId = "host-id"
     private let participantId = "participant-id"
     
@@ -51,7 +51,7 @@ struct ContentView: View {
             }
             .padding(.horizontal)
             .font(.callout.bold())
-            .showSafeHello(config: $config)
+            .showSafeHello(configuration: $config)
         }
         .preferredColorScheme(.light)
     }
@@ -64,7 +64,6 @@ struct ContentView: View {
                 return completion(error)
             }
 
-            SafeHelloClient.shared.clientKey = "<---REPLACE WITH YOUR API KEY--->"
             SafeHelloClient.shared.token = token
             SafeHelloClient.shared.connect { error in
                 if let error = error {
@@ -77,8 +76,8 @@ struct ContentView: View {
         }.resume()
     }
     
-    private func makeConfig(userId: String, eventId: String) -> Config {
-        Config(
+    private func makeConfig(userId: String, eventId: String) -> Configuration {
+        Configuration(
             userId: userId,
             eventId: eventId,
             title: "Demo event",
@@ -92,7 +91,7 @@ struct ContentView: View {
                 return
             }
             
-            SafeHelloClient.shared.createMeeting(
+            SafeHelloClient.shared.createEvent(
                 senderId: hostUserId,
                 receiverId: participantId,
                 completion: { result in
