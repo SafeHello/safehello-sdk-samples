@@ -1,0 +1,22 @@
+steps:
+  - block: ":red_button: Build and Publish"
+    branches: "release/*"
+
+  - label: ":docker: Build"
+    branches: "release/*"
+    commands: 
+      - DOCKER_TAG=$(echo $$BUILDKITE_BRANCH | cut -d "/" -f 2)
+      - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
+      - cd ./server/swift/
+      - docker build . --tag safehello/getting-started-server:$$DOCKER_TAG
+      - docker images
+      - docker push safehello/getting-started-server:$$DOCKER_TAG
+    plugins:
+      - seek-oss/aws-sm#v2.3.1:
+          env:
+            DOCKERHUB_USER:
+              secret-id: "/sh-mgmt/dockerhub/"
+              json-key: ".PUBLISHER_USER"
+            DOCKERHUB_USER_PASS:
+              secret-id: "/sh-mgmt/dockerhub/"
+              json-key: ".PUBLISHER_USER_PASS"
