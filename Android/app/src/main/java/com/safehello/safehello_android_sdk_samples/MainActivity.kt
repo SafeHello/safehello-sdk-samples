@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         val progressLayout = findViewById<View>(R.id.progressLayout)
         progressLayout.visibility = View.VISIBLE
-        connectToSafeHello()
+
+        connectToSafeHello(HOST_USER_ID)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -43,11 +44,16 @@ class MainActivity : AppCompatActivity() {
             })
 
         findViewById<Button>(R.id.createNewSafeHelloSessionButton).setOnClickListener {
+
+            SafeHelloSdk.connect()
             SafeHelloSdk.createEvent(HOST_USER_ID, PARTICIPANT_USER_ID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ event ->
                     SafeHelloSdk.myId = HOST_USER_ID
+
+
+
                     val eventId = event.id
                     if (eventId.isNullOrBlank()) {
                         Toast.makeText(this, "Error creating meeting: eventId is null or blank", Toast.LENGTH_SHORT).show()
@@ -66,6 +72,10 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.connectToExistingSafeHelloSessionButton).setOnClickListener {
             SafeHelloSdk.myId = PARTICIPANT_USER_ID
+
+            connectToSafeHello(PARTICIPANT_USER_ID).subscribeOn(Schedulers.io()).subscribe()
+            SafeHelloSdk.connect()
+
             Router.showEventScreen(
                 context = this,
                 title = "Demo Meeting",
@@ -76,24 +86,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     @CheckResult
-    private fun connectToSafeHello(): Completable {
+    private fun connectToSafeHello(userid:String): Completable {
         return Completable.create { emitter ->
-            val client = OkHttpClient()
-            val request = Request.Builder().url("http://10.0.2.2/tokens/$HOST_USER_ID").build()
             try {
-                val response = client.newCall(request).execute()
-                val responseBody = response.body?.string().orEmpty()
-                val token = JSONObject(responseBody).optString("token")
+                val token = getUserToken(userid)
                 if (token.isNullOrBlank()) {
                     emitter.onError(IllegalStateException("token is null or blank"))
                 } else {
+
+                    SafeHelloSdk.environment=SafeHelloSdk.Environment.Dev
                     SafeHelloSdk.token = token
-                    SafeHelloSdk.connect()
+
                     emitter.onComplete()
                 }
             } catch (exception: Exception) {
                 emitter.onError(exception)
             }
         }
+    }
+
+    private fun getUserToken(userid: String): String{
+        val client = OkHttpClient()
+        val request = Request.Builder().url("http://10.0.2.2/tokens/$userid").build()
+        val response = client.newCall(request).execute()
+        val responseBody = response.body?.string().orEmpty()
+        val token = JSONObject(responseBody).optString("token")
+        return token;
     }
 }
