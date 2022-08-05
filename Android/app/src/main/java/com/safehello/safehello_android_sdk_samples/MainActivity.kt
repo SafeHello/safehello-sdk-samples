@@ -52,22 +52,20 @@ class MainActivity : AppCompatActivity() {
                 .subscribe({ event ->
                     SafeHelloSdk.myId = HOST_USER_ID
 
-
-
                     val eventId = event.id
                     if (eventId.isNullOrBlank()) {
-                        Toast.makeText(this, "Error creating meeting: eventId is null or blank", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Error creating event: id is null or blank", Toast.LENGTH_SHORT).show()
                     } else {
                         Router.showEventScreen(
                             context = this,
-                            title = "Demo Meeting",
+                            title = "Demo Event",
                             subtitle = "08:00PM",
                             eventId = eventId
                         )
                     }
                 }, {
                     Log.e(TAG, it.message, it)
-                    Toast.makeText(this, "Error creating meeting", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error creating event", Toast.LENGTH_SHORT).show()
                 })
         }
         findViewById<Button>(R.id.connectToExistingSafeHelloSessionButton).setOnClickListener {
@@ -78,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
             Router.showEventScreen(
                 context = this,
-                title = "Demo Meeting",
+                title = "Demo Event",
                 subtitle = "08:00PM",
                 eventId = findViewById<EditText>(R.id.connectToExistingSafeHelloSessionEditText).text.toString()
             )
@@ -105,12 +103,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getUserToken(userid: String): String{
+    private fun getUserToken(userid: String): String {
         val client = OkHttpClient()
         val request = Request.Builder().url("http://10.0.2.2/tokens/$userid").build()
         val response = client.newCall(request).execute()
         val responseBody = response.body?.string().orEmpty()
-        val token = JSONObject(responseBody).optString("token")
-        return token;
+        return JSONObject(responseBody).optString("token");
     }
 }
