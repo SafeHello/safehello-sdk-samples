@@ -37,9 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         getUserToken(HOST_USER_ID).subscribeOn(Schedulers.io()).subscribe { token ->  HOST_TOKEN=token }
         getUserToken(PARTICIPANT_USER_ID).subscribeOn(Schedulers.io()).subscribe { token ->  PARTICIPANT_TOKEN=token }
-            //PARTICIPANT_TOKEN=getUserToken(PARTICIPANT_USER_ID) )
-
         SafeHelloSdk.environment=SafeHelloSdk.Environment.Dev
+
         progressLayout.visibility = View.GONE
 
         findViewById<Button>(R.id.createNewSafeHelloSessionButton).setOnClickListener {
@@ -87,8 +86,6 @@ class MainActivity : AppCompatActivity() {
                 if (token.isNullOrBlank()) {
                     emitter.onError(IllegalStateException("token is null or blank"))
                 } else {
-
-                    SafeHelloSdk.environment=SafeHelloSdk.Environment.Dev
                     SafeHelloSdk.token = token
                     SafeHelloSdk.connect()
                     emitter.onComplete()
