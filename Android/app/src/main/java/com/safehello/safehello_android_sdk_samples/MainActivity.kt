@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
         private const val HOST_USER_ID = "host-id"
         private const val PARTICIPANT_USER_ID = "participant-id"
-        private var HOST_TOKEN =""
-        private var PARTICIPANT_TOKEN=""
+        private var HOST_TOKEN = ""
+        private var PARTICIPANT_TOKEN = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +35,22 @@ class MainActivity : AppCompatActivity() {
         val progressLayout = findViewById<View>(R.id.progressLayout)
         progressLayout.visibility = View.VISIBLE
 
-        getUserToken(HOST_USER_ID).subscribeOn(Schedulers.io()).subscribe { token ->  HOST_TOKEN=token }
-        getUserToken(PARTICIPANT_USER_ID).subscribeOn(Schedulers.io()).subscribe { token ->  PARTICIPANT_TOKEN=token }
+        getUserToken(HOST_USER_ID)
+            .subscribeOn(Schedulers.io())
+            .subscribe(
+                { token -> HOST_TOKEN=token },
+                {
+                    Log.e(TAG, it.message, it)
+                    Toast.makeText(this, "Error retrieving host token", Toast.LENGTH_SHORT).show()
+                })
+        getUserToken(PARTICIPANT_USER_ID)
+            .subscribeOn(Schedulers.io())
+            .subscribe(
+                { token -> PARTICIPANT_TOKEN=token },
+                {
+                    Log.e(TAG, it.message, it)
+                    Toast.makeText(this, "Error retrieving participant token", Toast.LENGTH_SHORT).show()
+                })
         SafeHelloSdk.environment=SafeHelloSdk.Environment.Dev
 
         progressLayout.visibility = View.GONE
@@ -97,12 +111,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getUserToken(userid: String): Single<String> {
-            return Single.create  { emitter ->
-            val client = OkHttpClient()
-            val request = Request.Builder().url("http://10.0.2.2/tokens/$userid").build()
-            val response = client.newCall(request).execute()
-            val responseBody = response.body?.string().orEmpty()
+        return Single.create { emitter ->
+            try {
+                val client = OkHttpClient()
+                val request = Request.Builder().url("http://10.0.2.2/tokens/$userid").build()
+                val response = client.newCall(request).execute()
+                val responseBody = response.body?.string().orEmpty()
                 emitter.onSuccess(JSONObject(responseBody).optString("token"))
+            } catch (exception: Exception) {
+                emitter.onError(exception)
+            }
         }
     }
 }
