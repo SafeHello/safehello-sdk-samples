@@ -1,6 +1,9 @@
 const { SafeHello } = require('@safehello/sdk-typescript')
 const express = require('express')
+const cors = require('cors')
 const app = express()
+app.use(cors())
+
 const port = 8080
 
 const apiToken = process.env.TOKEN
