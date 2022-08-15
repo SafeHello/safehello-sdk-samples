@@ -1,16 +1,36 @@
 steps:
-  - block: ":red_button: Build and Publish"
+  - block: ":red_button: Build and Publish Swift"
     branches: "release/*"
-
-  - label: ":docker: Build"
+  - label: ":docker: Swift"
     branches: "release/*"
     commands: 
       - DOCKER_TAG=$(echo $$BUILDKITE_BRANCH | cut -d "/" -f 2)
       - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
       - cd ./server/swift/
-      - docker build . --tag safehello/getting-started-server:$$DOCKER_TAG
+      - docker build . --tag safehello/getting-started-server:swift-$$DOCKER_TAG
       - docker images
-      - docker push safehello/getting-started-server:$$DOCKER_TAG
+      - docker push safehello/getting-started-server:swift-$$DOCKER_TAG
+    plugins:
+      - seek-oss/aws-sm#v2.3.1:
+          env:
+            DOCKERHUB_USER:
+              secret-id: "/sh-mgmt/dockerhub/"
+              json-key: ".PUBLISHER_USER"
+            DOCKERHUB_USER_PASS:
+              secret-id: "/sh-mgmt/dockerhub/"
+              json-key: ".PUBLISHER_USER_PASS"
+
+  - block: ":red_button: Build and Publish Node"
+    branches: "release/*"
+  - label: ":docker: Node"
+    branches: "release/*"
+    commands:
+      - DOCKER_TAG=$(echo $$BUILDKITE_BRANCH | cut -d "/" -f 2)
+      - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
+      - cd ./server/node/
+      - docker build . --tag safehello/getting-started-server:node-$$DOCKER_TAG
+      - docker images
+      - docker push safehello/getting-started-server:node-$$DOCKER_TAG
     plugins:
       - seek-oss/aws-sm#v2.3.1:
           env:
