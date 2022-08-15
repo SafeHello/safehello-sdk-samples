@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@safehello/sdk-typescript": "^1.1.22",
+    "cors": "^2.8.5",
     "express": "^4.18.1"
   },
   "author": "Safehello <support@safehello.com> (https://safehello.com/)",
