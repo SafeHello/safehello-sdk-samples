@@ -1,40 +1,23 @@
 steps:
-  - block: ":red_button: Build and Publish Swift"
-    branches: "main"
-  - label: ":docker: Swift"
-    branches: "main"
-    commands: 
-      - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
-      - cd ./server/swift/
-      - docker build . --tag safehello/getting-started-server:swift-latest
-      - docker images
-      - docker push safehello/getting-started-server:swift-latest
-    plugins:
-      - seek-oss/aws-sm#v2.3.1:
-          env:
-            DOCKERHUB_USER:
-              secret-id: "/sh-mgmt/dockerhub/"
-              json-key: ".PUBLISHER_USER"
-            DOCKERHUB_USER_PASS:
-              secret-id: "/sh-mgmt/dockerhub/"
-              json-key: ".PUBLISHER_USER_PASS"
+  - block: ":red_button: Build and Publish"
+    # branches: "main"
 
-  - block: ":red_button: Build and Publish Node"
-    branches: "main"
-  - label: ":docker: Node"
-    branches: "main"
-    commands:
-      - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
-      - cd ./server/node/
-      - docker build . --tag safehello/getting-started-server:node-latest
-      - docker images
-      - docker push safehello/getting-started-server:node-latest
-    plugins:
-      - seek-oss/aws-sm#v2.3.1:
-          env:
-            DOCKERHUB_USER:
-              secret-id: "/sh-mgmt/dockerhub/"
-              json-key: ".PUBLISHER_USER"
-            DOCKERHUB_USER_PASS:
-              secret-id: "/sh-mgmt/dockerhub/"
-              json-key: ".PUBLISHER_USER_PASS"
+  - trigger: sdk-samples-build-publish-docker
+    label: Build and Publish SWIFT
+    build:
+      message: '${BUILDKITE_MESSAGE}'
+      commit: '${BUILDKITE_COMMIT}'
+      branch: '${BUILDKITE_BRANCH}'
+      env:
+        APP_DIR: './server/swift/'
+        DOCKER_TAG: 'swift-latest'
+
+  - trigger: sdk-samples-build-publish-docker
+    label: Build and Publish NODE
+    build:
+      message: '${BUILDKITE_MESSAGE}'
+      commit: '${BUILDKITE_COMMIT}'
+      branch: '${BUILDKITE_BRANCH}'
+      env:
+        APP_DIR: './server/node/'
+        DOCKER_TAG: 'node-latest'

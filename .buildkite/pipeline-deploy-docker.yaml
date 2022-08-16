@@ -1,0 +1,22 @@
+env:
+  APP_DIR: "${APP_DIR?is not passed from parent pipeline. Example: ./server/swift/}"
+  DOCKER_TAG: "${DOCKER_TAG?is not passed from parent pipeline. Example: swift-latest}"
+
+steps:
+  - label: ":docker: ${DOCKER_TAG}"
+    # branches: "main"
+    commands: 
+      - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
+      - cd ${APP_DIR}
+      - docker build . --tag safehello/getting-started-server:${DOCKER_TAG}
+      - docker images
+     # - docker push safehello/getting-started-server:${swift-latest}
+    plugins:
+      - seek-oss/aws-sm#v2.3.1:
+          env:
+            DOCKERHUB_USER:
+              secret-id: "/sh-mgmt/dockerhub/"
+              json-key: ".PUBLISHER_USER"
+            DOCKERHUB_USER_PASS:
+              secret-id: "/sh-mgmt/dockerhub/"
+              json-key: ".PUBLISHER_USER_PASS"
