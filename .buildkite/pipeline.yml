@@ -1,23 +1,44 @@
 steps:
+  - label: "Checking changes to build Docker Images"
+    plugins:
+      - chronotc/monorepo-diff#v2.3.0:
+          diff: "git diff --name-only HEAD~1"
+          watch:
+            - path:
+                - server/swift/
+              config:    
+                command: echo "SWIFT has changes and can be built"
+                label: SWIFT can be built
+            - path:
+                - server/node/
+              config:   
+                command: echo "NODE has changes and can be built"
+                label: NODE can be built
+
   - block: ":red_button: Build and Publish"
     # branches: "main"
 
-  - trigger: sdk-samples-build-publish-docker
-    label: Build and Publish SWIFT
-    build:
-      message: '${BUILDKITE_MESSAGE}'
-      commit: '${BUILDKITE_COMMIT}'
-      branch: '${BUILDKITE_BRANCH}'
-      env:
-        APP_DIR: './server/swift/'
-        DOCKER_TAG: 'swift-latest'
-
-  - trigger: sdk-samples-build-publish-docker
-    label: Build and Publish NODE
-    build:
-      message: '${BUILDKITE_MESSAGE}'
-      commit: '${BUILDKITE_COMMIT}'
-      branch: '${BUILDKITE_BRANCH}'
-      env:
-        APP_DIR: './server/node/'
-        DOCKER_TAG: 'node-latest'
+  - label: "Building Docker Images"
+    plugins:
+      - chronotc/monorepo-diff#v2.3.0:
+          diff: "git diff --name-only HEAD~1"
+          watch:
+            - path:
+                - server/swift/
+              config:    
+                trigger: sdk-samples-build-publish-docker
+                label: ":docker: SWIFT"
+                build:
+                  env:
+                    - APP_DIR="./server/swift/"
+                    - DOCKER_TAG="swift-latest"
+          watch:
+            - path:
+                - server/node/
+              config:   
+                trigger: sdk-samples-build-publish-docker
+                label: ":docker: NODE"
+                build:
+                  env:
+                    - APP_DIR="./server/node/"
+                    - DOCKER_TAG="node-latest"

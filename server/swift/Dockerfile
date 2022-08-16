@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up a build area
-WORKDIR /build
+WORKDIR /build 
 
 # First just resolve dependencies.
 # This creates a cached layer that can be reused
