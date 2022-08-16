@@ -39,6 +39,13 @@ app.get('/get/:eventId', async (req, res) => {
   res.send(event)
 })
 
+app.get('/register/:eventId/:userId', async (req, res) => {
+  // ie: http://localhost:8080/register/01G7YRQQ45B8GS5JDTPZ1RK401/sample-user-id
+  const { eventId, userId } = req.params
+  const event = await apiClient.addReceiver(eventId, userId)
+  res.send(event)
+})
+
 app.listen(port, () => {
   console.log(`SafeHello app listening on port ${port}`)
 })
