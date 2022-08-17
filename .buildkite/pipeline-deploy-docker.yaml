@@ -10,7 +10,7 @@ steps:
       - cd ${APP_DIR}
       - docker build . --tag safehello/getting-started-server:${DOCKER_TAG}
       - docker images
-      - docker push safehello/getting-started-server:${swift-latest}
+      - docker push safehello/getting-started-server:${DOCKER_TAG}
     plugins:
       - seek-oss/aws-sm#v2.3.1:
           env:
