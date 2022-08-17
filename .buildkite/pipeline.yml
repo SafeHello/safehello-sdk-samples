@@ -32,7 +32,6 @@ steps:
                   env:
                     - APP_DIR="./server/swift/"
                     - DOCKER_TAG="swift-latest"
-          watch:
             - path:
                 - server/node/
               config:   
