@@ -1,5 +1,6 @@
 steps:
   - label: "Checking changes to build Docker Images"
+    branches: "main"
     plugins:
       - chronotc/monorepo-diff#v2.3.0:
           diff: "git diff --name-only HEAD~1"
@@ -16,9 +17,10 @@ steps:
                 label: NODE can be built
 
   - block: ":red_button: Build and Publish"
-    # branches: "main"
+    branches: "main"
 
   - label: "Building Docker Images"
+    branches: "main"
     plugins:
       - chronotc/monorepo-diff#v2.3.0:
           diff: "git diff --name-only HEAD~1"

@@ -4,13 +4,13 @@ env:
 
 steps:
   - label: ":docker: ${DOCKER_TAG}"
-    # branches: "main"
+    branches: "main"
     commands: 
       - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
       - cd ${APP_DIR}
       - docker build . --tag safehello/getting-started-server:${DOCKER_TAG}
       - docker images
-     # - docker push safehello/getting-started-server:${swift-latest}
+      - docker push safehello/getting-started-server:${swift-latest}
     plugins:
       - seek-oss/aws-sm#v2.3.1:
           env:
