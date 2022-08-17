@@ -1,40 +1,45 @@
 steps:
-  - block: ":red_button: Build and Publish Swift"
+  - label: "Checking changes to build Docker Images"
     branches: "main"
-  - label: ":docker: Swift"
-    branches: "main"
-    commands: 
-      - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
-      - cd ./server/swift/
-      - docker build . --tag safehello/getting-started-server:swift-latest
-      - docker images
-      - docker push safehello/getting-started-server:swift-latest
     plugins:
-      - seek-oss/aws-sm#v2.3.1:
-          env:
-            DOCKERHUB_USER:
-              secret-id: "/sh-mgmt/dockerhub/"
-              json-key: ".PUBLISHER_USER"
-            DOCKERHUB_USER_PASS:
-              secret-id: "/sh-mgmt/dockerhub/"
-              json-key: ".PUBLISHER_USER_PASS"
+      - chronotc/monorepo-diff#v2.3.0:
+          diff: "git diff --name-only HEAD~1"
+          watch:
+            - path:
+                - server/swift/
+              config:    
+                command: echo "SWIFT has changes and can be built"
+                label: SWIFT can be built
+            - path:
+                - server/node/
+              config:   
+                command: echo "NODE has changes and can be built"
+                label: NODE can be built
 
-  - block: ":red_button: Build and Publish Node"
+  - block: ":red_button: Build and Publish"
     branches: "main"
-  - label: ":docker: Node"
+
+  - label: "Building Docker Images"
     branches: "main"
-    commands:
-      - docker login -u $$DOCKERHUB_USER --password-stdin <<< $$DOCKERHUB_USER_PASS
-      - cd ./server/node/
-      - docker build . --tag safehello/getting-started-server:node-latest
-      - docker images
-      - docker push safehello/getting-started-server:node-latest
     plugins:
-      - seek-oss/aws-sm#v2.3.1:
-          env:
-            DOCKERHUB_USER:
-              secret-id: "/sh-mgmt/dockerhub/"
-              json-key: ".PUBLISHER_USER"
-            DOCKERHUB_USER_PASS:
-              secret-id: "/sh-mgmt/dockerhub/"
-              json-key: ".PUBLISHER_USER_PASS"
+      - chronotc/monorepo-diff#v2.3.0:
+          diff: "git diff --name-only HEAD~1"
+          watch:
+            - path:
+                - server/swift/
+              config:    
+                trigger: sdk-samples-build-publish-docker
+                label: ":docker: SWIFT"
+                build:
+                  env:
+                    - APP_DIR="./server/swift/"
+                    - DOCKER_TAG="swift-latest"
+            - path:
+                - server/node/
+              config:   
+                trigger: sdk-samples-build-publish-docker
+                label: ":docker: NODE"
+                build:
+                  env:
+                    - APP_DIR="./server/node/"
+                    - DOCKER_TAG="node-latest"
