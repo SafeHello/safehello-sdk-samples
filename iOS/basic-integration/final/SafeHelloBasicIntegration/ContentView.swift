@@ -57,7 +57,7 @@ struct ContentView: View {
     }
     
     private func connectToSafeHello(with userId: String, completion: @escaping (Error?) -> Void) {
-        let url = URL(string: "http://127.0.0.1:8080/tokens/\(userId)")!
+        let url = URL(string: "http://127.0.0.1:80/tokens/\(userId)")!
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, let token = try? JSONDecoder().decode([String: String].self, from: data)["token"] else {
                 print(">>> An error has ocurred while fetching token")
