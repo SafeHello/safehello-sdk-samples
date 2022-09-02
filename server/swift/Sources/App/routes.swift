@@ -5,7 +5,7 @@ fileprivate let token = Environment.get("TOKEN")!
 func routes(_ app: Application) throws {
     app.get("tokens", ":userId") { req async throws -> TokenResponse in
         return try await req.client.post(app.environment.safeHelloTokensEndpoint) { clientReq in
-            clientReq.headers.add(name: "x-api-key", value: token)
+            clientReq.headers.add(name: "Authorization", value: token)
             try clientReq.content.encode(["userId": req.parameters.get("userId")!])
         }.content.decode(TokenResponse.self)
     }
