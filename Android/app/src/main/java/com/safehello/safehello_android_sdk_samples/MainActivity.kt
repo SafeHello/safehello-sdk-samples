@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                                 Router.showEventScreen(
                                     context = this,
                                     title = "Demo Event",
-                                    subtitle = "08:00PM\nMeeting id: $eventId",
+                                    subtitle = "08:00PM\nEvent id: $eventId",
                                     eventId = eventId
                                 )
                             }
@@ -88,14 +88,14 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { token ->
-                    val eventId = findViewById<EditText>(R.id.connectToExistingSafeHelloSessionEditText).text.toString()
+                    val eventId = findViewById<EditText>(R.id.connectToExistingSafeHelloSessionEditText).text.toString().uppercase()
                     progressLayout.visibility = View.GONE
                     SafeHelloSdk.token = token
                     SafeHelloSdk.connect(this)
                     Router.showEventScreen(
                         context = this,
                         title = "Demo Event",
-                        subtitle = "08:00PM\nMeeting id: $eventId",
+                        subtitle = "08:00PM\nEvent id: $eventId",
                         eventId = eventId
                     )
                 },
