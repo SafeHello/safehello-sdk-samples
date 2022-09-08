@@ -64,14 +64,16 @@ struct ContentView: View {
                 return completion(error)
             }
 
-            SafeHelloClient.shared.token = token
-            SafeHelloClient.shared.connect { error in
-                if let error = error {
-                    print(">>> SafeHello connection failed with error: \(error)")
-                } else {
-                    print(">>> SafeHello connected successfully!")
+            DispatchQueue.main.async {
+                SafeHelloClient.shared.token = token
+                SafeHelloClient.shared.connect { error in
+                    if let error = error {
+                        print(">>> SafeHello connection failed with error: \(error)")
+                    } else {
+                        print(">>> SafeHello connected successfully!")
+                    }
+                    completion(error)
                 }
-                completion(error)
             }
         }.resume()
     }
