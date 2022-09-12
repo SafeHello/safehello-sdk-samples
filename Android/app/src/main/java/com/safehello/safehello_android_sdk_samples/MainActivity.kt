@@ -23,12 +23,13 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
         private const val HOST_USER_ID = "host-id"
         private const val PARTICIPANT_USER_ID = "participant-id"
+        private const val LOCALHOST_IP="10.0.2.2" //"10.0.2.2 android emulator localhost.
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        SafeHelloSdk.environment=SafeHelloSdk.Environment.Dev
+
         findViewById<Button>(R.id.createNewSafeHelloSessionButton).setOnClickListener { createNewSession() }
         findViewById<Button>(R.id.connectToExistingSafeHelloSessionButton).setOnClickListener { connectToExistingSession() }
     }
@@ -111,7 +112,7 @@ class MainActivity : AppCompatActivity() {
         return Single.create { emitter ->
             try {
                 val client = OkHttpClient()
-                val request = Request.Builder().url("http://10.0.2.2/tokens/$userid").build()
+                val request = Request.Builder().url("http://$LOCALHOST_IP/tokens/$userid").build()
                 val response = client.newCall(request).execute()
                 val responseBody = response.body?.string().orEmpty()
                 emitter.onSuccess(JSONObject(responseBody).optString("token"))
