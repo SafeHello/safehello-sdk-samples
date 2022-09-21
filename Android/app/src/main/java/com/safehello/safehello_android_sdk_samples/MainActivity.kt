@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                                 Toast.makeText(this, "Error creating event: id is null or blank", Toast.LENGTH_SHORT).show()
                             } else {
                                 Router.showEventScreen(
-                                    context = this,
+                                    activity = this,
                                     title = "Demo Event",
                                     subtitle = "08:00PM\nEvent id: $eventId",
                                     eventId = eventId
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                     SafeHelloSdk.token = token
                     SafeHelloSdk.connect(this)
                     Router.showEventScreen(
-                        context = this,
+                        activity = this,
                         title = "Demo Event",
                         subtitle = "08:00PM\nEvent id: $eventId",
                         eventId = eventId
