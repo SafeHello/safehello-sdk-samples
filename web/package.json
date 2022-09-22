@@ -1,0 +1,16 @@
+{
+  "name": "safehello-sdk-web",
+  "version": "1.0.0",
+  "description": "SafeHello Web App Sample",
+  "scripts": {
+    "start": "http-server ."
+  },
+  "author": "Safehello <support@safehello.com> (https://safehello.com/)",
+  "license": "LicenseRef-LICENSE",
+  "dependencies": {
+    "@safehello/web-elements": "^0.0.5"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,23 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SafeHello Web App Sample</title>
+
+    <!-- SafeHello Deps -->
+    <link rel="stylesheet" href="node_modules/@safehello/web-elements/safehello-elements.css"/>
+    <script src="node_modules/@safehello/web-elements/safehello-elements.js"></script>
+
+    <!-- JS App -->
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <safehello-host api-url="http://localhost" user-id="sample-user-id" event-id="xxx">
+      <safehello-location slot="location"></safehello-location>
+      <safehello-signal slot="signal"></safehello-signal>
+      <safehello-mark slot="mark"></safehello-mark>
+      <safehello-verified slot="verified"></safehello-verified>
+    </safehello-host>
+  </body>
+</html>
