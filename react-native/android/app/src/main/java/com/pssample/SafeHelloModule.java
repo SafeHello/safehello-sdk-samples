@@ -12,10 +12,10 @@ import com.safehello.sdk.Router;
 import com.safehello.sdk.SafeHelloSdk;
 
 public class SafeHelloModule extends ReactContextBaseJavaModule {
-    private ReactApplicationContext _context;
+    //private Activity _context;
    SafeHelloModule(ReactApplicationContext context) {
        super(context);
-       _context=context;
+//       _context=context;
 
    }
 
@@ -28,7 +28,7 @@ public class SafeHelloModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void createSafeHelloEvent(String name, String location) {
         Log.d("CalendarModule", "Create event called with name: " + name         + " and location: " + location);
-
-        Router.INSTANCE.showEventScreen(_context,"demo","subtitle","234asfse");
+        Activity  context = getCurrentActivity();
+        Router.INSTANCE.showEventScreen(context,"demo","subtitle","234asfse");
     }    
 }
