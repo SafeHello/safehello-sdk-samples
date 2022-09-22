@@ -1,4 +1,4 @@
-const { SafeHello } = require('@safehello/sdk-typescript')
+const { SafeHello } = require('@safehello/server-javascript')
 const express = require('express')
 const cors = require('cors')
 const app = express()
