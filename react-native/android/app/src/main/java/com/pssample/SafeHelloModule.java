@@ -10,13 +10,11 @@ import java.util.HashMap;
 import android.util.Log;
 import com.safehello.sdk.Router;
 import com.safehello.sdk.SafeHelloSdk;
+import android.app.Activity;
 
 public class SafeHelloModule extends ReactContextBaseJavaModule {
-    //private Activity _context;
    SafeHelloModule(ReactApplicationContext context) {
        super(context);
-//       _context=context;
-
    }
 
    // add to CalendarModule.java
