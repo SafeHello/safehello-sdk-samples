@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:16-alpine
 ENV TOKEN=<<API_TOKEN>>
 RUN apk add --no-cache tini
 WORKDIR /app
