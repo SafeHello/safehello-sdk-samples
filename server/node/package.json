@@ -10,7 +10,7 @@
   "dependencies": {
     "@safehello/server-javascript": "^1.1.0",
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.19.2"
   },
   "author": "Safehello <support@safehello.com> (https://safehello.com/)",
   "contributors": [
